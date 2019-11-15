@@ -48,7 +48,7 @@ public class App {
                         Zak zak = new Zak(jmeno, prijmeni, pohlavi, vek);
                         System.out.println("Do jaké třídy si přejete žáka přidat? ");
                         String tridaNaVstupu = sc.nextLine();
-                        zak.pridejDoTridy(tridaNaVstupu);
+
                 }
 
                 break;

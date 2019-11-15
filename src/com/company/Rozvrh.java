@@ -4,14 +4,28 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Rozvrh {
-    private int score = 0;
+    private TvoricObjektu tvoricObjektu;
+    private int score;
     private Hodina hodina;
-    private int pocetHodinVtydnu = 40;
-    private ArrayList<Hodina> rozvrh = new ArrayList<Hodina>();
+    private int pocetHodinVtydnu;
+    private ArrayList<Hodina> rozvrh;
     private ArrayList<Ucitel> ucitelePrirazeniKhodinam;
+    private ArrayList<Trida> tridyPrirazeneKhodinam;
+    private ArrayList<Predmet> predmetyPrirazeneKhodinam;
     private Skola skola;
+    private Ucebna ucebna;
     private ArrayList<Ucebna> ucebnyPrirazeneKhodinam;
-    Random rand = new Random();
+    Random rand;
+    private Ucitel ucitel;
+
+    public Rozvrh() {
+        skola = new Skola();
+        skola.vytvorDefaultneNastaveneObjekty();
+        score = 0;
+        pocetHodinVtydnu = 40;
+        rozvrh = new ArrayList<Hodina>();
+        rand = new Random();
+    }
 
     public int getScore() {
         return score;
@@ -21,16 +35,17 @@ public class Rozvrh {
     }
 
 
+
+
     public ArrayList<Ucitel> priradUciteleKhodine() {
         ucitelePrirazeniKhodinam = new ArrayList<Ucitel>();
-
         for (int i = 0; i < pocetHodinVtydnu; i++) {
-            int n = rand.nextInt(9);
+            int n = rand.nextInt(skola.getTvoricObjektu().getVelikostUcitelstkehoSboru());
 
-                ucitelePrirazeniKhodinam.add(skola.getUcitelskySbor().get(n));
-                System.out.println("Přiřadil jsem učitele " + skola.getUcitelskySbor().get(n).getJmeno() + " " + skola.getUcitelskySbor().get(n).getPrijmeni());
+                ucitelePrirazeniKhodinam.add(skola.getTvoricObjektu().getUcitelskySbor().get(n));
+                System.out.println("Přiřadil jsem učitele " + skola.getTvoricObjektu().getUcitelskySbor().get(n).getJmeno() + " " + skola.getTvoricObjektu().getUcitelskySbor().get(n).getPrijmeni());
 
-                System.out.println("Ucitele prirazeni k hodinam: ");
+                System.out.println("Ucitel prirazený k hodinam: ");
                 System.out.println(ucitelePrirazeniKhodinam.get(i).getJmeno() + " " + ucitelePrirazeniKhodinam.get(i).getPrijmeni());
 
         }return ucitelePrirazeniKhodinam;
@@ -38,20 +53,31 @@ public class Rozvrh {
 
     public ArrayList<Ucebna> priradUcebnuKhodine(){
         ucebnyPrirazeneKhodinam = new ArrayList<Ucebna>();
-
-        for (int i = 0; i < ucebnyPrirazeneKhodinam.size(); i++){
-            int m = rand.nextInt(skola.getUcebny().size());
-
-            ucebnyPrirazeneKhodinam.add(skola.getUcebny().get(i));
-
+        for (int i = 0; i < pocetHodinVtydnu; i++){
+            int m = rand.nextInt(skola.getTvoricObjektu().getUcebny().size());
+            ucebnyPrirazeneKhodinam.add(skola.getTvoricObjektu().getUcebny().get(m));
         }
         return ucebnyPrirazeneKhodinam;
     }
 
-
+    public ArrayList<Trida> priradTriduKhodine(){
+        tridyPrirazeneKhodinam = new ArrayList<Trida>();
+        for (int i = 0; i < pocetHodinVtydnu; i++){
+            int o = rand.nextInt(skola.getTvoricObjektu().getTridy().size());
+            tridyPrirazeneKhodinam.add(skola.getTvoricObjektu().getTridy().get(o));
+        }
+        return tridyPrirazeneKhodinam;
+    }
+    public ArrayList<Predmet> priradPredmetKhodine(){
+        predmetyPrirazeneKhodinam = new ArrayList<Predmet>();
+        for (int i = 0; i < pocetHodinVtydnu; i++){
+            int p = rand.nextInt(skola.getTvoricObjektu().getPredmety().size());
+            predmetyPrirazeneKhodinam.add(skola.getTvoricObjektu().getPredmety().get(p));
+        }
+        return predmetyPrirazeneKhodinam;
+    }
 
     public ArrayList<Hodina> vytvotRozvrh(){
-
         for (int i = 0; i < pocetHodinVtydnu; i++){
             //rozvrh.add(hodina = new Hodina(getRandomNumber(), poradoveCisloHodinyDne, boolean delena, Ucebna ucebna, int poradoveCisloDneVtydnu, Ucitel zvolenyUcitel, Predmet predmet), Ucebna ucebna, int poradoveCisloDneVtydnu, Ucitel zvolenyUcitel, Predmet predmet)));
 
@@ -60,6 +86,8 @@ public class Rozvrh {
         }
         return rozvrh;
     }
+
+
 
 
 
