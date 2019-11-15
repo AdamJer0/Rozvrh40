@@ -45,46 +45,43 @@ public class Predmet {
     }
 
 
-
-
-
-    public double ukazSkoreHodinyZaPredmet(int poradoveCisloHodinyDneOdzadu, String jmenoPredmetu){
+    public double ukazSkoreHodinyZaPredmet(int poradoveCisloHodinyDne, String jmenoPredmetu){
         switch (getJmenoPredmetu()) {
             case "matematika":
-                scoreZaHodinu = poradoveCisloHodinyDneOdzadu;
+                scoreZaHodinu -= poradoveCisloHodinyDne;
                 return scoreZaHodinu;
             case "cestina":
-                scoreZaHodinu = poradoveCisloHodinyDneOdzadu * 0.5;
+                scoreZaHodinu -= poradoveCisloHodinyDne * 0.5;
                 return scoreZaHodinu;
             case "anglictina":
-                scoreZaHodinu = poradoveCisloHodinyDneOdzadu * 0.5;
+                scoreZaHodinu -= poradoveCisloHodinyDne * 0.5;
                 return scoreZaHodinu;
             case "zemepis":
-                scoreZaHodinu = poradoveCisloHodinyDneOdzadu;
+                scoreZaHodinu += poradoveCisloHodinyDne;
                 return scoreZaHodinu;
             case "dejepis":
-                scoreZaHodinu = poradoveCisloHodinyDneOdzadu;
+                scoreZaHodinu += poradoveCisloHodinyDne;
                 return scoreZaHodinu;
             case "obcanskaNauka":
-                scoreZaHodinu = poradoveCisloHodinyDneOdzadu;
+                scoreZaHodinu += poradoveCisloHodinyDne;
                 return scoreZaHodinu;
             case "politika":
-                scoreZaHodinu = poradoveCisloHodinyDneOdzadu * 0.5;
+                scoreZaHodinu += poradoveCisloHodinyDne * 0.5;
                 return scoreZaHodinu;
             case "technickeKresleni":
-                scoreZaHodinu = poradoveCisloHodinyDneOdzadu;
+                scoreZaHodinu -= poradoveCisloHodinyDne;
                 return scoreZaHodinu;
             case "informatika":
-                scoreZaHodinu = poradoveCisloHodinyDneOdzadu;
+                scoreZaHodinu -= poradoveCisloHodinyDne;
                 return scoreZaHodinu;
             case "fyzika":
-                scoreZaHodinu = poradoveCisloHodinyDneOdzadu * 1;
+                scoreZaHodinu -= poradoveCisloHodinyDne * 1;
                 return scoreZaHodinu;
             case "chemie":
-                scoreZaHodinu = poradoveCisloHodinyDneOdzadu * 1;
+                scoreZaHodinu -= poradoveCisloHodinyDne * 0.5;
                 return scoreZaHodinu;
             case "telocvik":
-                scoreZaHodinu = poradoveCisloHodinyDneOdzadu * 0.5;
+                scoreZaHodinu += poradoveCisloHodinyDne * 0.5;
                 return scoreZaHodinu;
             default:
                 System.out.println("Nastala chyba, předmět nebyl nalezen.");

@@ -10,7 +10,7 @@ public class Skola {
 
     TvoricObjektu tvoricObjektu;
 
-    public void vytvorDefaultneNastaveneObjekty(){
+    public void vytvorDefaultneNastaveneObjekty(int pocetHodinVtydnu){
         tvoricObjektu = new TvoricObjektu();
         tvoricObjektu.vytvorPredmety();
         tvoricObjektu.vytvorUcebnu();
@@ -18,6 +18,7 @@ public class Skola {
         tvoricObjektu.vytvorZaky();
         tvoricObjektu.vytvorTridy();
         tvoricObjektu.getPredmety().get(7).ukazSkoreHodinyZaPredmet(7, tvoricObjektu.getPredmety().get(7).getJmenoPredmetu());
+        tvoricObjektu.vytvorHodiny(pocetHodinVtydnu);
     }
 
 

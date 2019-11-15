@@ -5,35 +5,28 @@ import java.util.ArrayList;
 
 public class Hodina {
     private Rozvrh rozvrh;
-
-    private int poradoveCisloHodinyDne;
-    private boolean delena;
-    private Ucebna ucebna;
     private int poradoveCisloDneVtydnu;
+    private int poradoveCisloHodinyDne;
     private Ucitel zvolenyUcitel;
     private Predmet predmet;
-
+    private ArrayList<Hodina> hodiny;
     private ArrayList<Ucitel> zvoleniUcitele = new ArrayList<Ucitel>();
     private ArrayList<Predmet> predmety = new ArrayList<>();
+    private boolean delena;
+    private Ucebna ucebna;
 
-    public Hodina(int poradoveCisloHodinyDne, boolean delena, Ucebna ucebna, int poradoveCisloDneVtydnu, Ucitel zvolenyUcitel, Predmet predmet) {
-        this.poradoveCisloHodinyDne = poradoveCisloHodinyDne;
-        this.delena = delena;
-        this.ucebna = ucebna;
-        this.poradoveCisloDneVtydnu = poradoveCisloDneVtydnu;
-        this.zvolenyUcitel = zvolenyUcitel;
-        this.predmet = predmet;
+    public int getPoradoveCisloDneVtydnu() {
+        return poradoveCisloDneVtydnu;
     }
-
-    public int getPoradoveCisloHodinyDneOdzadu() {
+    public int getPoradoveCisloHodinyDne() {
         return poradoveCisloHodinyDne;
     }
 
-    public void setPoradoveCisloHodinyDne(int poradoveCisloHodinyDne) {
+
+    public Hodina(int poradoveCisloHodinyDne, boolean delena, int poradoveCisloDneVtydnu) {
         this.poradoveCisloHodinyDne = poradoveCisloHodinyDne;
+        this.delena = delena;
+        this.poradoveCisloDneVtydnu = poradoveCisloDneVtydnu;
     }
-
-
-
 
 }

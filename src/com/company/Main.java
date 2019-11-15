@@ -7,11 +7,6 @@ public class Main {
 
 
         Rozvrh rozvrh = new Rozvrh();
-
-
-        rozvrh.priradUciteleKhodine();
-
-
-        rozvrh.priradUcebnuKhodine();
+        rozvrh.priradUdajeKhodine();
     }
 }

@@ -6,7 +6,6 @@ import java.util.Random;
 public class Rozvrh {
     private TvoricObjektu tvoricObjektu;
     private int score;
-    private Hodina hodina;
     private int pocetHodinVtydnu;
     private ArrayList<Hodina> rozvrh;
     private ArrayList<Ucitel> ucitelePrirazeniKhodinam;
@@ -20,7 +19,7 @@ public class Rozvrh {
 
     public Rozvrh() {
         skola = new Skola();
-        skola.vytvorDefaultneNastaveneObjekty();
+        skola.vytvorDefaultneNastaveneObjekty(pocetHodinVtydnu);
         score = 0;
         pocetHodinVtydnu = 40;
         rozvrh = new ArrayList<Hodina>();
@@ -33,8 +32,17 @@ public class Rozvrh {
     public void setScore(int score) {
         this.score = score;
     }
+    public int getPocetHodinVtydnu() {
+        return pocetHodinVtydnu;
+    }
 
-
+    public ArrayList<Hodina> priradUdajeKhodine(){
+        priradUciteleKhodine();
+        priradUcebnuKhodine();
+        priradPredmetKhodinam();
+        priradTriduKhodine();
+        return rozvrh;
+    }
 
 
     public ArrayList<Ucitel> priradUciteleKhodine() {
@@ -68,11 +76,12 @@ public class Rozvrh {
         }
         return tridyPrirazeneKhodinam;
     }
-    public ArrayList<Predmet> priradPredmetKhodine(){
+    public ArrayList<Predmet> priradPredmetKhodinam(){
         predmetyPrirazeneKhodinam = new ArrayList<Predmet>();
         for (int i = 0; i < pocetHodinVtydnu; i++){
             int p = rand.nextInt(skola.getTvoricObjektu().getPredmety().size());
             predmetyPrirazeneKhodinam.add(skola.getTvoricObjektu().getPredmety().get(p));
+            score += predmetyPrirazeneKhodinam.get(i).ukazSkoreHodinyZaPredmet(skola.getTvoricObjektu().getHodiny().get(i).getPoradoveCisloHodinyDne(), predmetyPrirazeneKhodinam.get(i).getJmenoPredmetu());
         }
         return predmetyPrirazeneKhodinam;
     }

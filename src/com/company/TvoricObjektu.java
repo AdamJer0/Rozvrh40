@@ -1,6 +1,8 @@
 package com.company;
 
+import java.awt.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class TvoricObjektu {
 
@@ -8,9 +10,10 @@ public class TvoricObjektu {
     private int velikostUcitelstkehoSboru;
     private ArrayList<Predmet> predmety = new ArrayList<>();
     private ArrayList<Trida> tridy = new ArrayList<>();
+    private ArrayList<Hodina> hodiny = new ArrayList<>();
     private int pocetZakuSkoly = 545;
-    ArrayList<Ucitel> ucitelskySbor;
-
+    private ArrayList<Ucitel> ucitelskySbor;
+    private Rozvrh rozvrh;
 
     //gettery a settery
     public ArrayList<Ucitel> getUcitelskySbor() {
@@ -25,9 +28,9 @@ public class TvoricObjektu {
     public ArrayList<Predmet> getPredmety() {
         return predmety;
     }
-
-
-
+    public ArrayList<Hodina> getHodiny() {
+        return hodiny;
+    }
 
 
     //predmety
@@ -198,5 +201,18 @@ public class TvoricObjektu {
             System.out.println("Žák byl vytvořen: " + zak.getJmeno() + " " + zak.getPrijmeni());
         }
         System.out.println();
+    }
+
+
+    //hodiny
+    public void vytvorHodiny(int pocetHodinVtydnu) {
+        for (int i = 0; i < pocetHodinVtydnu; i++){
+            Hodina hodina = new Hodina(i, false, i / 5);
+            System.out.println("Hodina byla vytvořena " + i + " nedělená " + i / 5);
+            hodiny.add(hodina);
+        }
+        System.out.println();
+
+
     }
 }
