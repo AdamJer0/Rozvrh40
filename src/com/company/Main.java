@@ -8,5 +8,6 @@ public class Main {
 
         Rozvrh rozvrh = new Rozvrh();
         rozvrh.priradUdajeKhodine();
+
     }
 }

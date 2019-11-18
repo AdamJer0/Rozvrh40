@@ -6,11 +6,16 @@ import java.util.Random;
 public class Rozvrh {
     private TvoricObjektu tvoricObjektu;
     private int score;
-    private int pocetHodinVtydnu;
+    private int pocetHodinVtydnu = 40;
     private ArrayList<Hodina> rozvrh;
     private ArrayList<Ucitel> ucitelePrirazeniKhodinam;
     private ArrayList<Trida> tridyPrirazeneKhodinam;
     private ArrayList<Predmet> predmetyPrirazeneKhodinam;
+
+    public Skola getSkola() {
+        return skola;
+    }
+
     private Skola skola;
     private Ucebna ucebna;
     private ArrayList<Ucebna> ucebnyPrirazeneKhodinam;
@@ -39,8 +44,9 @@ public class Rozvrh {
     public ArrayList<Hodina> priradUdajeKhodine(){
         priradUciteleKhodine();
         priradUcebnuKhodine();
-        priradPredmetKhodinam();
         priradTriduKhodine();
+        priradPredmetKhodinam();
+
         return rozvrh;
     }
 
@@ -73,6 +79,11 @@ public class Rozvrh {
         for (int i = 0; i < pocetHodinVtydnu; i++){
             int o = rand.nextInt(skola.getTvoricObjektu().getTridy().size());
             tridyPrirazeneKhodinam.add(skola.getTvoricObjektu().getTridy().get(o));
+
+
+            System.out.println("Přiřadil jsem třídu " + skola.getTvoricObjektu().getTridy().get(o).getJmenoTridy() +
+                                " k hodině " + skola.getTvoricObjektu().getHodiny().get(o).getPoradoveCisloDneVtydnu() + " ve dnu týdne " +
+                                skola.getTvoricObjektu().getHodiny().get(o).getPoradoveCisloDneVtydnu());
         }
         return tridyPrirazeneKhodinam;
     }
@@ -81,7 +92,12 @@ public class Rozvrh {
         for (int i = 0; i < pocetHodinVtydnu; i++){
             int p = rand.nextInt(skola.getTvoricObjektu().getPredmety().size());
             predmetyPrirazeneKhodinam.add(skola.getTvoricObjektu().getPredmety().get(p));
+
+            System.out.println("Přiřadil jsem předmět " + skola.getTvoricObjektu().getPredmety().get(p).getJmenoPredmetu() + " k hodině " +
+                                skola.getTvoricObjektu().getHodiny().get(p).getPoradoveCisloDneVtydnu());
+
             score += predmetyPrirazeneKhodinam.get(i).ukazSkoreHodinyZaPredmet(skola.getTvoricObjektu().getHodiny().get(i).getPoradoveCisloHodinyDne(), predmetyPrirazeneKhodinam.get(i).getJmenoPredmetu());
+            System.out.println("Score je: " + score);
         }
         return predmetyPrirazeneKhodinam;
     }

@@ -207,10 +207,11 @@ public class TvoricObjektu {
     //hodiny
     public void vytvorHodiny(int pocetHodinVtydnu) {
         for (int i = 0; i < pocetHodinVtydnu; i++){
-            Hodina hodina = new Hodina(i, false, i / 5);
-            System.out.println("Hodina byla vytvořena " + i + " nedělená " + i / 5);
+            Hodina hodina = new Hodina(i, false, i / 8);
+            System.out.println("Hodina byla vytvořena " + i + " nedělená " + i / 8);
             hodiny.add(hodina);
         }
+        System.out.println();
         System.out.println();
 
 
