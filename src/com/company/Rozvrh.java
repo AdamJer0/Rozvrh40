@@ -11,8 +11,12 @@ public class Rozvrh {
     private ArrayList<Ucitel> ucitelePrirazeniKhodinam;
     private ArrayList<Trida> tridyPrirazeneKhodinam;
     private ArrayList<Predmet> predmetyPrirazeneKhodinam;
-    private SouborParametruHodiny souborParametruHodiny;
-    private ArrayList<SouborParametruHodiny> souborParametruHodin;
+    private SouborParametruHodinyZaka souborParametruHodiny;
+    private ArrayList<SouborParametruHodinyZaka> souborParametruHodin;
+    private RozvrhUcitele rozvrhUcitele;
+    private ArrayList<RozvrhUcitele> rozvrhUcitelu;
+    private RozvrhUcebny rozvrhUcebny;
+    private ArrayList<RozvrhUcebny> rozvrhUceben;
 
 
     public Skola getSkola() {
@@ -116,11 +120,11 @@ public class Rozvrh {
 
 
 
-    public ArrayList<SouborParametruHodiny> vytvorSouboryParametruHodin(){
-        souborParametruHodin = new ArrayList<SouborParametruHodiny>();
+    public ArrayList<SouborParametruHodinyZaka> vytvorSouboryParametruHodin(){
+        souborParametruHodin = new ArrayList<SouborParametruHodinyZaka>();
         for(int i = 0; i < getPocetHodinVtydnu(); i++){
 
-            souborParametruHodiny = new SouborParametruHodiny(predmetyPrirazeneKhodinam.get(i), ucitelePrirazeniKhodinam.get(i), ucebnyPrirazeneKhodinam.get(i), tridyPrirazeneKhodinam.get(i), rozvrhHodin.get(i));
+            souborParametruHodiny = new SouborParametruHodinyZaka(predmetyPrirazeneKhodinam.get(i), ucitelePrirazeniKhodinam.get(i), ucebnyPrirazeneKhodinam.get(i), tridyPrirazeneKhodinam.get(i), rozvrhHodin.get(i));
             souborParametruHodin.add(souborParametruHodiny);
         }
         for(int i = 0; i < pocetHodinVtydnu; i++) {
@@ -133,6 +137,40 @@ public class Rozvrh {
                     ucitelePrirazeniKhodinam.get(i).getJmeno() + " " + ucitelePrirazeniKhodinam.get(i).getPrijmeni());
         }
         return souborParametruHodin;
+    }
+
+    public ArrayList<RozvrhUcitele> getRozvrhUcitelu(){
+        rozvrhUcitelu = new ArrayList<RozvrhUcitele>();
+        for(int i = 0; i < getPocetHodinVtydnu(); i++){
+            rozvrhUcitele = new RozvrhUcitele(predmetyPrirazeneKhodinam.get(i), ucebnyPrirazeneKhodinam.get(i), tridyPrirazeneKhodinam.get(i), rozvrhHodin.get(i));
+            rozvrhUcitelu.add(rozvrhUcitele);
+        }
+        for(int i = 0; i < pocetHodinVtydnu; i++) {
+            System.out.println("Do souboru parametrů hodin jsem přidal: " + "Předmět: " +
+                    predmetyPrirazeneKhodinam.get(i).getJmenoPredmetu() + " Učebnu: " +
+                    ucebnyPrirazeneKhodinam.get(i).getJmenoUcebny() + " Třídu: " +
+                    tridyPrirazeneKhodinam.get(i).getJmenoTridy() + " Hodinu s pořadovým čáslem hodiny dne: " +
+                    rozvrhHodin.get(i).getPoradoveCisloHodinyDne() + " a s pořadovým číslem dne v týdnu: " +
+                    rozvrhHodin.get(i).getPoradoveCisloDneVtydnu());
+        }
+        return rozvrhUcitelu;
+    }
+
+    public ArrayList<RozvrhUcebny> getRozvrhUceben(){
+        rozvrhUceben = new ArrayList<RozvrhUcebny>();
+        for(int i = 0; i < getPocetHodinVtydnu(); i++){
+            rozvrhUcebny = new RozvrhUcebny(predmetyPrirazeneKhodinam.get(i), ucitelePrirazeniKhodinam.get(i), tridyPrirazeneKhodinam.get(i), rozvrhHodin.get(i));
+            rozvrhUceben.add(rozvrhUcebny);
+        }
+        for(int i = 0; i < pocetHodinVtydnu; i++) {
+            System.out.println("Do souboru parametrů hodin jsem přidal: " + "Předmět: " +
+                    predmetyPrirazeneKhodinam.get(i).getJmenoPredmetu() + " Třídu: " +
+                    tridyPrirazeneKhodinam.get(i).getJmenoTridy() + " Hodinu s pořadovým čáslem hodiny dne: " +
+                    rozvrhHodin.get(i).getPoradoveCisloHodinyDne() + " a s pořadovým číslem dne v týdnu: " +
+                    rozvrhHodin.get(i).getPoradoveCisloDneVtydnu()+ " Učitele: " +
+                    ucitelePrirazeniKhodinam.get(i).getJmeno() + " " + ucitelePrirazeniKhodinam.get(i).getPrijmeni());
+        }
+        return rozvrhUceben;
     }
 
 
