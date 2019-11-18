@@ -9,6 +9,7 @@ public class Skola {
     }
 
     TvoricObjektu tvoricObjektu;
+    private Rozvrh rozvrh;
 
     public void vytvorDefaultneNastaveneObjekty(int pocetHodinVtydnu){
         tvoricObjektu = new TvoricObjektu();
@@ -20,11 +21,41 @@ public class Skola {
         tvoricObjektu.vytvorHodiny(pocetHodinVtydnu);
     }
 
+    public int najdiUcitele(Ucitel ucitel){
+        return rozvrh.getUcitelePrirazeniKhodinam().indexOf(ucitel);
+    }
+    public int najdiUcitele(String prijmeni){
+        for(int i = 0; i < rozvrh.getUcitelePrirazeniKhodinam().size(); i++){
+            Ucitel ucitel = rozvrh.getUcitelePrirazeniKhodinam().get(i);
+            if (ucitel.getPrijmeni().equals(prijmeni)){
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public int najdiUcebnu(Ucebna ucebna){
+        return rozvrh.getUcebnyPrirazeneKhodinam().indexOf(ucebna);
+    }
+    public int najdiUcebnu(String jmenoUcebny){
+        for(int i = 0; i < rozvrh.getUcitelePrirazeniKhodinam().size(); i++){
+            Ucebna ucebna = rozvrh.getUcebnyPrirazeneKhodinam().get(i);
+            if (ucebna.getJmenoUcebny().equals(jmenoUcebny)){
+                return i;
+            }
+        }
+        return -1;
+    }
 
 
 
 
-   
+
+
+
+
+
+
 
 
 

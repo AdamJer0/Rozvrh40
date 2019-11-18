@@ -7,8 +7,12 @@ public class Main {
         Rozvrh rozvrh = new Rozvrh();
         rozvrh.priradUdajeKhodine();
         rozvrh.vytvotRozvrh();
+        System.out.println();
         rozvrh.vytvorSouboryParametruHodin();
-        rozvrh.getRozvrhUcitelu();
-        rozvrh.getRozvrhUceben();
+        System.out.println();
+        rozvrh.getRozvrhUcitele("k");
+        System.out.println();
+        rozvrh.getRozvrhUcebny("VI");
+        System.out.println();
     }
 }

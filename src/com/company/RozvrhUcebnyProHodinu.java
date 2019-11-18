@@ -1,14 +1,14 @@
 package com.company;
 
-public class RozvrhUcitele {
+public class RozvrhUcebnyProHodinu {
     private Predmet predmet;
-    private Ucebna ucebna;
+    private Ucitel ucitel;
     private Trida trida;
     private Hodina hodina;
 
-    public RozvrhUcitele(Predmet predmet, Ucebna ucebna, Trida trida, Hodina hodina) {
+    public RozvrhUcebnyProHodinu(Predmet predmet, Ucitel ucitel, Trida trida, Hodina hodina) {
         this.predmet = predmet;
-        this.ucebna = ucebna;
+        this.ucitel = ucitel;
         this.trida = trida;
         this.hodina = hodina;
     }
