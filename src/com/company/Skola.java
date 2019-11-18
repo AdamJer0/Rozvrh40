@@ -17,7 +17,6 @@ public class Skola {
         tvoricObjektu.vytvorUcitele();
         tvoricObjektu.vytvorZaky();
         tvoricObjektu.vytvorTridy();
-        tvoricObjektu.getPredmety().get(7).ukazSkoreHodinyZaPredmet(7, tvoricObjektu.getPredmety().get(7).getJmenoPredmetu());
         tvoricObjektu.vytvorHodiny(pocetHodinVtydnu);
     }
 

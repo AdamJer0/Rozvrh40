@@ -7,10 +7,13 @@ public class Rozvrh {
     private TvoricObjektu tvoricObjektu;
     private int score;
     private int pocetHodinVtydnu = 40;
-    private ArrayList<Hodina> rozvrh;
+    private ArrayList<Hodina> rozvrhHodin;
     private ArrayList<Ucitel> ucitelePrirazeniKhodinam;
     private ArrayList<Trida> tridyPrirazeneKhodinam;
     private ArrayList<Predmet> predmetyPrirazeneKhodinam;
+    private SouborParametruHodiny souborParametruHodiny;
+    private ArrayList<SouborParametruHodiny> souborParametruHodin;
+
 
     public Skola getSkola() {
         return skola;
@@ -27,7 +30,7 @@ public class Rozvrh {
         skola.vytvorDefaultneNastaveneObjekty(pocetHodinVtydnu);
         score = 0;
         pocetHodinVtydnu = 40;
-        rozvrh = new ArrayList<Hodina>();
+        rozvrhHodin = new ArrayList<Hodina>();
         rand = new Random();
     }
 
@@ -47,7 +50,7 @@ public class Rozvrh {
         priradTriduKhodine();
         priradPredmetKhodinam();
 
-        return rozvrh;
+        return rozvrhHodin;
     }
 
 
@@ -104,14 +107,33 @@ public class Rozvrh {
 
     public ArrayList<Hodina> vytvotRozvrh(){
         for (int i = 0; i < pocetHodinVtydnu; i++){
-            //rozvrh.add(hodina = new Hodina(getRandomNumber(), poradoveCisloHodinyDne, boolean delena, Ucebna ucebna, int poradoveCisloDneVtydnu, Ucitel zvolenyUcitel, Predmet predmet), Ucebna ucebna, int poradoveCisloDneVtydnu, Ucitel zvolenyUcitel, Predmet predmet)));
+            rozvrhHodin.add(skola.getTvoricObjektu().getHodiny().get(i));
 
-            this.getScore();
-            System.out.println("Skore tohoto rozvrhu je: " + score);
+            System.out.println("Skore tohoto rozvrhu je: " + this.getScore());
         }
-        return rozvrh;
+        return rozvrhHodin;
     }
 
+
+
+    public ArrayList<SouborParametruHodiny> vytvorSouboryParametruHodin(){
+        souborParametruHodin = new ArrayList<SouborParametruHodiny>();
+        for(int i = 0; i < getPocetHodinVtydnu(); i++){
+
+            souborParametruHodiny = new SouborParametruHodiny(predmetyPrirazeneKhodinam.get(i), ucitelePrirazeniKhodinam.get(i), ucebnyPrirazeneKhodinam.get(i), tridyPrirazeneKhodinam.get(i), rozvrhHodin.get(i));
+            souborParametruHodin.add(souborParametruHodiny);
+        }
+        for(int i = 0; i < 8; i++) {
+            System.out.println("Do souboru parametrů hodin jsem přidal: " + "Předmět: " +
+                    predmetyPrirazeneKhodinam.get(i).getJmenoPredmetu() + " Učitele: " +
+                    ucitelePrirazeniKhodinam.get(i).getJmeno() + " " + skola.getTvoricObjektu().getUcitelskySbor().get(i).getPrijmeni() + " Učebnu: " +
+                    ucebnyPrirazeneKhodinam.get(i).getJmenoUcebny() + " Třídu: " +
+                    tridyPrirazeneKhodinam.get(i).getJmenoTridy() + " Hodinu s pořadovým čáslem hodiny dne: " +
+                    rozvrhHodin.get(i).getPoradoveCisloHodinyDne() + " a s pořadovým číslem dne v týdnu: " +
+                    rozvrhHodin.get(i).getPoradoveCisloDneVtydnu());
+        }
+        return souborParametruHodin;
+    }
 
 
 
