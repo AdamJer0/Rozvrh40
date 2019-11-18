@@ -61,11 +61,11 @@ public class Rozvrh {
 
                 ucitelePrirazeniKhodinam.add(skola.getTvoricObjektu().getUcitelskySbor().get(n));
                 System.out.println("Přiřadil jsem učitele " + skola.getTvoricObjektu().getUcitelskySbor().get(n).getJmeno() + " " + skola.getTvoricObjektu().getUcitelskySbor().get(n).getPrijmeni());
-
                 System.out.println("Ucitel prirazený k hodinam: ");
                 System.out.println(ucitelePrirazeniKhodinam.get(i).getJmeno() + " " + ucitelePrirazeniKhodinam.get(i).getPrijmeni());
+        }
 
-        }return ucitelePrirazeniKhodinam;
+        return ucitelePrirazeniKhodinam;
     }
 
     public ArrayList<Ucebna> priradUcebnuKhodine(){
@@ -130,7 +130,7 @@ public class Rozvrh {
                     tridyPrirazeneKhodinam.get(i).getJmenoTridy() + " Hodinu s pořadovým čáslem hodiny dne: " +
                     rozvrhHodin.get(i).getPoradoveCisloHodinyDne() + " a s pořadovým číslem dne v týdnu: " +
                     rozvrhHodin.get(i).getPoradoveCisloDneVtydnu() + " Učitele: " +
-                    ucitelePrirazeniKhodinam.get(i).getJmeno() + " " + skola.getTvoricObjektu().getUcitelskySbor().get(i).getPrijmeni());
+                    ucitelePrirazeniKhodinam.get(i).getJmeno() + " " + ucitelePrirazeniKhodinam.get(i).getPrijmeni());
         }
         return souborParametruHodin;
     }
